@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Migrations;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,11 +20,13 @@ class Photos extends Migration
     {
         Schema::defaultStringLength(191);
         Schema::create(
-            'photos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('url')->unique();
-            $table->timestamps();
-        });
+            'photos',
+            function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('url')->unique();
+                $table->timestamps();
+            }
+        );
     }
 
     /**

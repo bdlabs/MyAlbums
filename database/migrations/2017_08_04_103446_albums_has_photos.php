@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Migrations;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,24 +19,30 @@ class AlbumsHasPhotos extends Migration
     public function up()
     {
         Schema::create(
-            'albums_has_photos', function (Blueprint $table) {
-            $table->integer('album_id')->unsigned();
-            $table->integer('photo_id')->unsigned();
-        });
+            'albums_has_photos',
+            function (Blueprint $table) {
+                $table->integer('album_id')->unsigned();
+                $table->integer('photo_id')->unsigned();
+            }
+        );
 
         Schema::table(
-            'albums_has_photos', function (Blueprint $table) {
-            $table->foreign('album_id')
-                ->references('id')
-                ->on('albums');
-        });
+            'albums_has_photos',
+            function (Blueprint $table) {
+                $table->foreign('album_id')
+                    ->references('id')
+                    ->on('albums');
+            }
+        );
 
         Schema::table(
-            'albums_has_photos', function (Blueprint $table) {
-            $table->foreign('photo_id')
-                ->references('id')
-                ->on('photos');
-        });
+            'albums_has_photos',
+            function (Blueprint $table) {
+                $table->foreign('photo_id')
+                    ->references('id')
+                    ->on('photos');
+            }
+        );
     }
 
     /**

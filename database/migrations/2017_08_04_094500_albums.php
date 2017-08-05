@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Migrations;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,10 +20,12 @@ class Albums extends Migration
     {
         Schema::defaultStringLength(191);
         Schema::create(
-            'albums', function (Blueprint $table) {
-            $table->increments("id");
-            $table->string("title")->unique();
-        });
+            'albums',
+            function (Blueprint $table) {
+                $table->increments("id");
+                $table->string("title")->unique();
+            }
+        );
     }
 
     /**
