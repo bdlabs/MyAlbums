@@ -37,7 +37,7 @@ class Album extends Model
      */
     static public function allAlbums(): Builder
     {
-        return Album::selectRaw('*, IF(ahp.album_id IS NULL,0,SUM(1)) as `qty`')
+        return Album::selectRaw('albums.*, COUNT(ahp.album_id) as `qty`')
             ->leftJoin(
                 'albums_has_photos as ahp', function ($q) {
                 $q->on('ahp.album_id', '=', 'albums.id');
